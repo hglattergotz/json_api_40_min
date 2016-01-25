@@ -37,7 +37,11 @@ Programmer origin stories
 
 ^ 
 - Long format interviews
-- 24 episodes with guests like Jafar Husain, Steve Klabnik, Ashley Williams
+- 24 episodes
+- guests
+  * Jafar Husain
+  * Steve Klabnik
+  * Ashley Williams
 
 ---
 
@@ -45,19 +49,24 @@ Programmer origin stories
 
 ^
 - Lets talk about JSON:API
-- BTW: This is the logo - its not JSON
-- Does not reflect quality of project
+- BTW: This is the logo
+- its not valid JSON
 
 ---
 
 # **_{_"_json_"_:_"_api_"_}_**
+
+^
+- Doesn't reflect on quality of project
 
 ---
 
 ## Aside from _HTTP_ and _JSON_ what to most API**s** have in _common_**?**
 
 ^
-- If you consume lots of APIs over time you will notice 
+- If consumed and devd many APIs
+- over time you will notice
+- even if all HTTP/JSON
 
 ---
 
@@ -96,9 +105,8 @@ Programmer origin stories
 # _**bikeshedding**_
 
 ^
-- So you will spend a lot of mental energy on this trivial details
-- My argument is that something like JSON-API can settle disputes and probably has better solutions that you have
-come up with.
+- So you will spend a lot of mental energy on these trivial details
+- My argument is that something like JSON-API can settle disputes and probably has better solutions than you have come up with.
 
 ---
 
@@ -153,12 +161,10 @@ Overview of small part of structure spec to give a sense of it
 
 ---
 
-# _Single Resource_
-
 ```http
 GET /articles/1 HTTP/1.1
 ```
-```json
+```
 {
   "data": {
     "type": "articles",
@@ -173,80 +179,112 @@ GET /articles/1 HTTP/1.1
 ```
 
 ^
-- simple example of a resource object
-- data: documents primary data
+- simple example: resource obj
+- data: doc primary data
 - type
 - id
 - attributes
 
 ---
 
-# _Single Resource with_ Relationship
-
 ```http
 GET /articles/1 HTTP/1.1
 ```
-```json
+```
 {
   "data": {
     "type": "articles",
     "id": "1",
-    "attributes": {"title": "...", "body": "...", "created": "..."},
+    "attributes": {
+      "title": "Hello world",
+      "body": "bla bla bla",
+      "created": "2016-01-10T14:00:02+01:00"
+    },
     "relationships": {
       "author": {
         "links": {
           "self": "http://example.com/articles/1/relationships/author",
           "related": "http://example.com/articles/1/author"
-    }}}}
+        }
+      }
+    }
+  }
 }
 ```
 
 ^
 - relationships
-- data is a Resource identifier Object - is an object that identifies a resource
-- ...
-- Doc Struct also contains detailed specs for 
-- Meta information
-- Links
-- Member names (allowed characters, etc)
 
 ---
-
-# _Single Resource with_ included _Relationship_
 
 ```http
 GET /articles/1?include=author HTTP/1.1
 ```
-```json
+```
 {
   "data": {
-    "type": "articles", "id": "1", "attributes": {},
+    "type": "articles",
+    "id": "1",
+    "attributes": {
+      "title": "Hello world",
+      "body": "bla bla bla",
+      "created": "2016-01-10T14:00:02+01:00"
+    },
     "relationships": {
       "author": {
-        "links": {"self": "...", "related": "..."},
-        "data": { "type": "people", "id": "9" }
+        "links": {
+          "self": "http://example.com/articles/1/relationships/author",
+          "related": "http://example.com/articles/1/author"
+        },
+        "data": { "type": "people", "id": "9" },
       }
     }
-  },
-  "included": [{"type": "people", "id": "9", "attributes": {}}]
+  }
+  "included": []
 }
 ```
 
 ^
-- relationships
-- data is a Resource identifier Object - is an object that identifies a resource
+- data: Resource Identifier Obj
+
+---
+
+```http
+GET /articles/1?include=author HTTP/1.1
+```
+```
+{
+  "data": {
+    :
+  },
+  "included": [
+    {
+      "type": "people",
+      "id": "9",
+      "attributes": {
+        "first_name": "Joe",
+        "last_name": "Smith"
+      }
+    }
+  ]
+}
+```
+
+^
+- Why is good - reduce data duplication
 - ...
-- Doc Struct also contains detailed specs for 
+- Spec also includes
+- Allowed chars fr names
 - Meta information
-- Links
-- Member names (allowed characters, etc)
+- pagination
+- filtering
 
 ---
 
 # _Fetching Data - Sparse Field Sets_
 
 ```http
-GET /articles?fields[articles]=title,body HTTP/1.1
+GET /articles?fields[articles]=title,created HTTP/1.1
 Accept: application/vnd.api+json
 ```
 
@@ -286,7 +324,7 @@ HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/vnd.api+json
 ```
 
-```json
+```
 {
   "errors": [
     {
@@ -314,7 +352,7 @@ Only requirement: Error objects must be returned as array keyed by ERRORS in top
 - Ensures repeatable results
 - allows us to focus on acquiring the domain knowledge
 - no longer need to write custom client code
-- This is what I mean by bringing sanity
+- allows community to build tools
 
 ---
 
@@ -414,6 +452,12 @@ export default DS.Model.extend({
     articles: DS.hasMany('article')
 });
 ```
+
+---
+
+## Who is using json-api?
+
+### <br><br><br>_**booking.com<br>hood.ie<br>patreon.com<br>ember-data**_
 
 ---
 
