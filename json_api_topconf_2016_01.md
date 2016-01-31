@@ -4,6 +4,11 @@
 ### The ultimate
 ### anti-bikeshedding weapon
 
+^
+- tough time slot
+- lunch, tired
+- caffein
+
 ---
 
 ![inline](henning_center.png)
@@ -61,21 +66,23 @@ Programmer origin stories
 
 ---
 
-## Aside from _HTTP_ and _JSON_ what to most API**s** have in _common_**?**
+## Aside from _HTTP_ and _JSON_ what do most API**s** have in _common_**?**
 
 ^
-- If consumed and devd many APIs
+- assuming HTTP/JSON
+- If consumed/built many APIs
 - over time you will notice
-- even if all HTTP/JSON
 
 ---
 
 ## Not Much**!**
 
 ^
-- This means that you are spending a lot of time learning and writing custom clients
-- Over last 6 years that has definitely been my experience
+- spending lots of time learning
+- and writing custom clients
+- Over 6-7 years my experience
 - Lots API integrat, big names
+- ExactTarget, Eloqua, Pardot
 - And building API's int/ext
 
 ---
@@ -88,24 +95,24 @@ Programmer origin stories
 ```
 
 ^
-- Paraphrase the language analogy
-- Giving talk in English, that is not native language of most
-- Of course you cannot change how 3rd party provider make APIs
-- But you can at least build your own according to a standard
+- Paraphrase language analogy
+- Giving talk in English ...
+- cannot change how 3rd party
+- But apply to your own
 
 ---
 
 ## _I don't need a standard,<br>_ I have my own thing_**!**_
 
 ^
-- Talk about mini decisions and bike shedding
+- examples lead up to bikeshedding
+- you spend lots of mental energy on trivial details
 
 ---
 
 # _**bikeshedding**_
 
 ^
-- So you will spend a lot of mental energy on these trivial details
 - My argument is that something like JSON-API can settle disputes and probably has better solutions than you have come up with.
 
 ---
@@ -115,9 +122,10 @@ Programmer origin stories
 ### <br><br><br>_**HAL, Siren, OData,**_ **JSON-API**
 
 ^
-- Json-api is not the first to try to solve this
+- Json-api is not the first
 - there are other standards
 - jsonapi is well suited for SPA
+- extracted from ember-data by Yehuda Kats
 
 ---
 
@@ -129,6 +137,7 @@ Fetching Data
 Creating, Updating and Deleting Resources
 Query Parameters
 Errors
+HTTP status codes
 
 ---
 
@@ -205,11 +214,7 @@ GET /articles/1 HTTP/1.1
         "links": {
           "self": "http://example.com/articles/1/relationships/author",
           "related": "http://example.com/articles/1/author"
-        }
-      }
-    }
-  }
-}
+} } } } }
 ```
 
 ^
@@ -458,6 +463,21 @@ export default DS.Model.extend({
 ## Who is using json-api?
 
 ### <br><br><br>_**booking.com<br>hood.ie<br>patreon.com<br>ember-data**_
+
+---
+
+## _`jsonapi.org`_
+
+^
+- Project website
+...
+- specification
+- extensions
+- recommendations
+- examples
+- implementations
+...
+- discourse forum
 
 ---
 
