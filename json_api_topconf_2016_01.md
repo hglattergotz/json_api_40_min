@@ -7,7 +7,9 @@
 ^
 - tough time slot
 - lunch, tired
-- caffein
+- nodding off, exercise
+- json-api anti-bikeshedding
+- clarification: jsonapi spec
 
 ---
 
@@ -59,7 +61,7 @@ Programmer origin stories
 
 ---
 
-# **_{_"_json_"_:_"_api_"_}_**
+# **_{"json":"api"}_**
 
 ^
 - Doesn't reflect on quality of project
@@ -70,20 +72,23 @@ Programmer origin stories
 
 ^
 - assuming HTTP/JSON
-- If consumed/built many APIs
-- over time you will notice
+- If consumed signif # APIs
+- over time you come to
+  realize that its ...
 
 ---
 
 ## Not Much**!**
 
 ^
+- codes, q params, rel-ships
 - spending lots of time learning
 - and writing custom clients
 - Over 6-7 years my experience
 - Lots API integrat, big names
-- ExactTarget, Eloqua, Pardot
-- And building API's int/ext
+- inconsistencies betw end-p
+- allways 200 OK
+- HAVE to LEARN ALL THIS
 
 ---
 
@@ -113,7 +118,8 @@ Programmer origin stories
 # _**bikeshedding**_
 
 ^
-- My argument is that something like JSON-API can settle disputes and probably has better solutions than you have come up with.
+- Parkinson's law of triviality
+- JSON-API can settle disputes
 
 ---
 
@@ -231,9 +237,7 @@ GET /articles/1?include=author HTTP/1.1
     "type": "articles",
     "id": "1",
     "attributes": {
-      "title": "Hello world",
-      "body": "bla bla bla",
-      "created": "2016-01-10T14:00:02+01:00"
+      :
     },
     "relationships": {
       "author": {
