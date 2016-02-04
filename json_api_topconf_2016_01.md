@@ -472,6 +472,8 @@ export default DS.Model.extend({
 
 ## _`jsonapi.org`_
 
+### <br><br><br><br><br><br>_`discuss.jsonapi.org`_
+
 ^
 - Project website
 ...
